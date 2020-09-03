@@ -12,70 +12,54 @@ let score = 0
 // Candidate's name
 const input = require('readline-sync');
 let name = input.question("What is your name? ");
-console.log("\n");
+console.log("Candidate Name: " + name + "\n")
 
-// Response for first quiz question
-  let quizResponse1 = input.question("True or false: 5000 meters = 5 kilometers. ");
-  let quizAnswer1 = "True";
-  console.log("Your Answer: " + quizResponse1);
-  console.log("Correct Answer: " + quizAnswer1);
-  // if statement to add up correct response score
-    if (quizResponse1.toUpperCase() === quizAnswer1.toUpperCase()) {
+// Arrays for questions and correct answers
+let quizQuestion = [
+  "True or false: 5000 meters = 5 kilometers. ",
+  "(5 + 3)/2 * 10 = ? ",
+  "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
+  "Who was the first American woman in space? ",
+  "What is the minimum crew size for the International Space Station (ISS)? "
+];
+
+let quizAnswer = [
+  "True",
+  "40",
+  "Trajectory",
+  "Sally Ride",
+  "3"
+]
+
+// Variable for array with quiz responses from candidate
+let quizResponse = [];
+// For loop to prompt questions
+for (i = 0; i < quizQuestion.length; i++) {
+
+  // Creating array with candidate's quiz responses
+  quizResponse[i] = input.question(quizQuestion[i]);
+
+  console.log("Your Answer: " + quizResponse[i]);
+  
+  console.log("Correct Answer: " + quizAnswer[i] + "\n");
+ 
+  // if statement to add up score
+    if (quizResponse[i].toUpperCase() === quizAnswer[i].toUpperCase()) {
       score++;
     }
-console.log(score);
+  // Array push method to create array of candidate's responses 
+  quizResponse.push(quizResponse[i]);
+  quizResponse.pop();
+}
+// Print array of responses
+console.log(quizResponse);
 
-console.log("\n")
-
-//Response for second quiz question
-  let quizResponse2 = input.question("(5 + 3)/2 * 10 = ? ");
-  let quizAnswer2 = "40";
-  console.log("Your Answer: " + quizResponse2);
-  console.log("Correct Answer: " + quizAnswer2);
-    if (quizResponse2 === quizAnswer2) {
-      score++;
-    }
-console.log(score);
-console.log("\n")
-
-//Response for third quiz question
-  let quizResponse3 = input.question("Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ");
-  let quizAnswer3 = "Trajectory";
-  console.log("Your Answer: " + quizResponse3);
-  console.log("Correct Answer: " + quizAnswer3);
-    if (quizResponse3.toUpperCase() === quizAnswer3.toUpperCase()) {
-      score++;
-    }
-console.log(score);
-
-console.log("\n")
-// // Response for fourth quiz question
-  let quizResponse4 = input.question("Who was the first American woman in space? ");
-  let quizAnswer4 = "Sally Ride";
-  console.log("Your Answer: " + quizResponse4);
-  console.log("Correct Answer: " + quizAnswer4);
-    if (quizResponse3.toUpperCase() === quizAnswer3.toUpperCase()) {
-      score++;
-    }
-console.log(score);
-
-console.log("\n")
-// // Response for fifth quiz question
-  let quizResponse5 = input.question("What is the minimum crew size for the International Space Station (ISS)? ");
-  let quizAnswer5 = "3";
-  console.log("Your Answer: " + quizResponse5);
-  console.log("Correct Answer: " + quizAnswer5);
-    if (quizResponse5 === quizAnswer5) {
-      score++;
-    }
-console.log(score);
-
-console.log("\n")
-
+// Template literal with grading, score, and pass/fail status
 console.log(`Overall Grade: ${(score/5)*100}% (${score} of 5 responses correct) <<<`)
 
-if (score >= 4) {
+  if (score >= 4) {
   console.log(`>>> Status: PASSED <<<`)
-} else if (score < 4) {
+  } else if (score < 4) {
   console.log(`>>> Status: FAILED <<<`)
-}
+  }
+
