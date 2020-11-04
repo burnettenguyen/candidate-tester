@@ -7,12 +7,12 @@
 // Add your code here. You can do it!
 
 // Declaring variable to calculate score
-let score = 0
+let score = 0;
 
 // Candidate's name
 const input = require('readline-sync');
 let name = input.question("What is your name? ");
-console.log("Candidate Name: " + name + "\n")
+console.log("Candidate Name: " + name + "\n");
 
 // Arrays for questions and correct answers
 let quizQuestion = [
@@ -29,7 +29,7 @@ let quizAnswer = [
   "Trajectory",
   "Sally Ride",
   "3"
-]
+];
 
 // Variable for array with quiz responses from candidate
 let quizResponse = [];
@@ -46,20 +46,20 @@ for (i = 0; i < quizQuestion.length; i++) {
   // if statement to add up score
     if (quizResponse[i].toUpperCase() === quizAnswer[i].toUpperCase()) {
       score++;
-    }
+    };
   // Array push method to create array of candidate's responses 
   quizResponse.push(quizResponse[i]);
   quizResponse.pop();
-}
+};
 // Print array of responses
 console.log(quizResponse);
 
 // Template literal with grading, score, and pass/fail status
-console.log(`Overall Grade: ${(score/5)*100}% (${score} of 5 responses correct) <<<`)
+console.log(`Overall Grade: ${(score/5)*100}% (${score} of 5 responses correct) <<<`);
 
   if (score >= 4) {
-  console.log(`>>> Status: PASSED <<<`)
+  console.log(`>>> Status: PASSED <<<`);
   } else if (score < 4) {
-  console.log(`>>> Status: FAILED <<<`)
+  console.log(`>>> Status: FAILED <<<`);
   }
 
